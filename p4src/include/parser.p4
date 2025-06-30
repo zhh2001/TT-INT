@@ -1,0 +1,57 @@
+#ifndef _PARSER_P4_
+#define _PARSER_P4_
+
+#ifndef V1MODEL_VERSION
+#define V1MODEL_VERSION 20200408
+#endif
+
+#include <core.p4>
+#include <v1model.p4>
+
+#include "headers.p4"
+
+parser MyParser(packet_in packet,
+                out headers hdr,
+                inout metadata meta,
+                inout standard_metadata_t standard_metadata) {
+    state start {
+        packet.extract(hdr.ethernet);
+        transition select(hdr.ethernet.etherType) {
+            TYPE_IPV4: parse_ipv4;
+            default: accept;
+        }
+    }
+
+    state parse_ipv4 {
+        packet.extract(hdr.ipv4);
+        transition select(hdr.ipv4.protocol) {
+            PROTO_INT: parse_int_header;
+            PROTO_CUSTOM: accept;
+#if INT_NODE_TYPE != INT_SOURCE_NODE
+            default: parse_int_header;
+#else
+            default: accept;
+#endif
+        }
+    }
+
+    state parse_int_header {
+        packet.extract(hdr.int_header);
+        meta.int_metadata_count = hdr.int_header.count;
+        transition select(meta.int_metadata_count) {
+            0: accept;
+            default: parse_int_metadata;
+        }
+    }
+
+    state parse_int_metadata {
+        packet.extract(hdr.int_metadata.next);
+        meta.int_metadata_count = meta.int_metadata_count - 1;
+        transition select(meta.int_metadata_count){
+            0: accept;
+            default: parse_int_metadata;
+        }
+    }
+}
+
+#endif  /* _PARSER_P4_ */

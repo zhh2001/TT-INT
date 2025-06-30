@@ -1,0 +1,517 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2" xmlns:gx="http://www.google.com/kml/ext/2.2">
+    <Document id="7">
+        <Style id="2">
+            <IconStyle id="4">
+                <colorMode>normal</colorMode>
+                <scale>1</scale>
+                <heading>0</heading>
+                <Icon id="5">
+                    <href>https://app.diagrams.net/img/lib/clip_art/networking/Router_Icon_128x128.png</href>
+                </Icon>
+            </IconStyle>
+            <LabelStyle id="3">
+                <color>ffffffff</color>
+                <colorMode>normal</colorMode>
+                <scale>2</scale>
+            </LabelStyle>
+        </Style>
+        <Style id="0">
+            <LineStyle id="1">
+                <color>ff7280fa</color>
+                <colorMode>normal</colorMode>
+                <width>2</width>
+            </LineStyle>
+        </Style>
+        <Placemark id="9">
+            <name>Boston</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="8">
+                <coordinates>-71.05977,42.35843,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="11">
+            <name>Detroit</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="10">
+                <coordinates>-83.04575,42.33143,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="13">
+            <name>Philadelphia</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="12">
+                <coordinates>-75.16379,39.95234,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="15">
+            <name>New York</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="14">
+                <coordinates>-74.00597,40.71427,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="17">
+            <name>Sacramento</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="16">
+                <coordinates>-121.4944,38.58157,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="19">
+            <name>San Jose</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="18">
+                <coordinates>-121.89496,37.33939,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="21">
+            <name>Seattle</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="20">
+                <coordinates>-122.33207,47.60621,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="23">
+            <name>Portland</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="22">
+                <coordinates>-122.67621,45.52345,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="25">
+            <name>Sunnyvale</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="24">
+                <coordinates>-122.03635,37.36883,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="27">
+            <name>Los Angeles</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="26">
+                <coordinates>-118.24368,34.05223,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="29">
+            <name>Pittsburgh</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="28">
+                <coordinates>-79.99589,40.44062,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="31">
+            <name>Dallas</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="30">
+                <coordinates>-96.80667,32.78306,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="33">
+            <name>San Antonio</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="32">
+                <coordinates>-98.49363,29.42412,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="35">
+            <name>Phoenix</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="34">
+                <coordinates>-112.07404,33.44838,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="37">
+            <name>San Diego</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="36">
+                <coordinates>-117.15726,32.71533,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="39">
+            <name>Tampa</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="38">
+                <coordinates>-82.45843,27.94752,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="41">
+            <name>Miami</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="40">
+                <coordinates>-80.19366,25.77427,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="43">
+            <name>New Orleans</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="42">
+                <coordinates>-90.07507,29.95465,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="45">
+            <name>Houston</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="44">
+                <coordinates>-95.36327,29.76328,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="47">
+            <name>Washington</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="46">
+                <coordinates>-77.03637,38.89511,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="49">
+            <name>Baltimore</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="48">
+                <coordinates>-76.61219,39.29038,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="51">
+            <name>Denver</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="50">
+                <coordinates>-104.9847,39.73915,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="53">
+            <name>Minneapolis</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="52">
+                <coordinates>-93.26384,44.97997,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="55">
+            <name>Chicago</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="54">
+                <coordinates>-87.65005,41.85003,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="57">
+            <name>Kansas City</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="56">
+                <coordinates>-94.62746,39.11417,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="59">
+            <name>Atlanta</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="58">
+                <coordinates>-84.38798,33.749,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="61">
+            <name>Raleigh</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="60">
+                <coordinates>-78.63861,35.7721,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="63">
+            <name>Ashburn</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="62">
+                <coordinates>-77.48749,39.04372,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="65">
+            <name>Vienna</name>
+            <styleUrl>#2</styleUrl>
+            <Point id="64">
+                <coordinates>-77.26526,38.90122,0.0</coordinates>
+            </Point>
+        </Placemark>
+        <Placemark id="67">
+            <name>Boston - Detroit</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="66">
+                <coordinates>-71.05977,42.35843,0.0 -83.04575,42.33143,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="69">
+            <name>Boston - New York</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="68">
+                <coordinates>-71.05977,42.35843,0.0 -74.00597,40.71427,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="71">
+            <name>Detroit - Chicago</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="70">
+                <coordinates>-83.04575,42.33143,0.0 -87.65005,41.85003,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="73">
+            <name>Philadelphia - Pittsburgh</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="72">
+                <coordinates>-75.16379,39.95234,0.0 -79.99589,40.44062,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="75">
+            <name>Philadelphia - New York</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="74">
+                <coordinates>-75.16379,39.95234,0.0 -74.00597,40.71427,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="77">
+            <name>Philadelphia - Baltimore</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="76">
+                <coordinates>-75.16379,39.95234,0.0 -76.61219,39.29038,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="79">
+            <name>Philadelphia - Ashburn</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="78">
+                <coordinates>-75.16379,39.95234,0.0 -77.48749,39.04372,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="81">
+            <name>New York - Chicago</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="80">
+                <coordinates>-74.00597,40.71427,0.0 -87.65005,41.85003,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="83">
+            <name>Sacramento - San Jose</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="82">
+                <coordinates>-121.4944,38.58157,0.0 -121.89496,37.33939,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="85">
+            <name>Sacramento - Portland</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="84">
+                <coordinates>-121.4944,38.58157,0.0 -122.67621,45.52345,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="87">
+            <name>San Jose - Sunnyvale</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="86">
+                <coordinates>-121.89496,37.33939,0.0 -122.03635,37.36883,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="89">
+            <name>San Jose - Denver</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="88">
+                <coordinates>-121.89496,37.33939,0.0 -104.9847,39.73915,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="91">
+            <name>Seattle - Chicago</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="90">
+                <coordinates>-122.33207,47.60621,0.0 -87.65005,41.85003,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="93">
+            <name>Seattle - Portland</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="92">
+                <coordinates>-122.33207,47.60621,0.0 -122.67621,45.52345,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="95">
+            <name>Sunnyvale - Los Angeles</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="94">
+                <coordinates>-122.03635,37.36883,0.0 -118.24368,34.05223,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="97">
+            <name>Los Angeles - Dallas</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="96">
+                <coordinates>-118.24368,34.05223,0.0 -96.80667,32.78306,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="99">
+            <name>Los Angeles - Phoenix</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="98">
+                <coordinates>-118.24368,34.05223,0.0 -112.07404,33.44838,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="101">
+            <name>Los Angeles - San Diego</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="100">
+                <coordinates>-118.24368,34.05223,0.0 -117.15726,32.71533,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="103">
+            <name>Pittsburgh - Washington</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="102">
+                <coordinates>-79.99589,40.44062,0.0 -77.03637,38.89511,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="105">
+            <name>Pittsburgh - Chicago</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="104">
+                <coordinates>-79.99589,40.44062,0.0 -87.65005,41.85003,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="107">
+            <name>Dallas - San Antonio</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="106">
+                <coordinates>-96.80667,32.78306,0.0 -98.49363,29.42412,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="109">
+            <name>Dallas - Houston</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="108">
+                <coordinates>-96.80667,32.78306,0.0 -95.36327,29.76328,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="111">
+            <name>Dallas - Kansas City</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="110">
+                <coordinates>-96.80667,32.78306,0.0 -94.62746,39.11417,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="113">
+            <name>Dallas - Atlanta</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="112">
+                <coordinates>-96.80667,32.78306,0.0 -84.38798,33.749,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="115">
+            <name>Dallas - New Orleans</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="114">
+                <coordinates>-96.80667,32.78306,0.0 -90.07507,29.95465,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="117">
+            <name>San Antonio - Houston</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="116">
+                <coordinates>-98.49363,29.42412,0.0 -95.36327,29.76328,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="119">
+            <name>San Antonio - Phoenix</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="118">
+                <coordinates>-98.49363,29.42412,0.0 -112.07404,33.44838,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="121">
+            <name>Phoenix - San Diego</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="120">
+                <coordinates>-112.07404,33.44838,0.0 -117.15726,32.71533,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="123">
+            <name>Tampa - Miami</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="122">
+                <coordinates>-82.45843,27.94752,0.0 -80.19366,25.77427,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="125">
+            <name>Tampa - New Orleans</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="124">
+                <coordinates>-82.45843,27.94752,0.0 -90.07507,29.95465,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="127">
+            <name>Miami - Atlanta</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="126">
+                <coordinates>-80.19366,25.77427,0.0 -84.38798,33.749,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="129">
+            <name>New Orleans - Houston</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="128">
+                <coordinates>-90.07507,29.95465,0.0 -95.36327,29.76328,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="131">
+            <name>Washington - Raleigh</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="130">
+                <coordinates>-77.03637,38.89511,0.0 -78.63861,35.7721,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="133">
+            <name>Washington - Baltimore</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="132">
+                <coordinates>-77.03637,38.89511,0.0 -76.61219,39.29038,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="135">
+            <name>Washington - Vienna</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="134">
+                <coordinates>-77.03637,38.89511,0.0 -77.26526,38.90122,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="137">
+            <name>Denver - Chicago</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="136">
+                <coordinates>-104.9847,39.73915,0.0 -87.65005,41.85003,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="139">
+            <name>Minneapolis - Chicago</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="138">
+                <coordinates>-93.26384,44.97997,0.0 -87.65005,41.85003,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="141">
+            <name>Chicago - Kansas City</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="140">
+                <coordinates>-87.65005,41.85003,0.0 -94.62746,39.11417,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="143">
+            <name>Atlanta - Raleigh</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="142">
+                <coordinates>-84.38798,33.749,0.0 -78.63861,35.7721,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="145">
+            <name>Atlanta - Ashburn</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="144">
+                <coordinates>-84.38798,33.749,0.0 -77.48749,39.04372,0.0</coordinates>
+            </LineString>
+        </Placemark>
+        <Placemark id="147">
+            <name>Ashburn - Vienna</name>
+            <styleUrl>#0</styleUrl>
+            <LineString id="146">
+                <coordinates>-77.48749,39.04372,0.0 -77.26526,38.90122,0.0</coordinates>
+            </LineString>
+        </Placemark>
+    </Document>
+</kml>
