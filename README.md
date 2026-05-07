@@ -3,6 +3,9 @@
 A Time-Threshold-based Lightweight In-Band Network Telemetry Scheme for
 P4-Enabled Programmable Networks.
 
+论文发表于 *IEEE Transactions on Network and Service Management*，DOI: [10.1109/TNSM.2026.3688086](https://doi.org/10.1109/TNSM.2026.3688086)。
+
+
 本仓库提供 TT-INT 论文中"基础时间阈值机制"在 BMv2 上的最小可运行实现，
 以及两套自动化测试。
 
