@@ -14,34 +14,33 @@
 control MyEgress(inout headers hdr,
                  inout metadata meta,
                  inout standard_metadata_t standard_metadata) {
+    // 时间阈值驱动的遥测插入逻辑
     action add_int_metadata(switchId_t swid) {
-        if (hdr.int_header.isValid()) {
-            // 获取时间差
-            timestamp_t last_ts = get_last_ts();
-            timestamp_t time_thld = get_time_thld();
-            timestamp_t timestamp_delta = standard_metadata.ingress_global_timestamp - last_ts;
+        timestamp_t now    = standard_metadata.ingress_global_timestamp;
+        timestamp_t last   = get_last_ts(meta.flow_num);
+        timestamp_t thld   = get_time_th(meta.flow_num);
+        timestamp_t delta  = now - last;
 
-            // 是否超过阈值
-            if (timestamp_delta >= time_thld || is_bytes_abnormal()) {
-                // 将 INT 堆栈计数器增加 1
-                hdr.int_header.count = hdr.int_header.count + 1;
+        // 仅在距离上次插入足够久、且 INT 栈未达上限时才插入
+        if (delta >= thld) {
+            bit<8> cnt     = hdr.int_header.count;
+            bit<8> max_n   = get_max_cnt(meta.flow_num);
 
-                // 追加当前交换机的 INT METADATA
+            if (cnt < max_n) {
+                hdr.int_header.count = cnt + 1;
+
                 hdr.int_metadata.push_front(1);
                 hdr.int_metadata[0].setValid();
                 hdr.int_metadata[0].switch_id = swid;
-                hdr.int_metadata[0].output_port = standard_metadata.egress_port;
+                hdr.int_metadata[0].hop_num   = hdr.int_header.init_ttl - hdr.ipv4.ttl;
 
+                hdr.ipv4.totalLen = hdr.ipv4.totalLen + METADATA_LENGTH_INT;
+
+                // 仅对正常转发的数据包更新时间戳，避免克隆数据包重复触发
                 if (standard_metadata.instance_type == 0) {
-                    // 更新最近一次写入 INT METADATA 的时间戳
-                    bool ok = set_last_ts(standard_metadata.ingress_global_timestamp);
-                    assert(ok);
-                    if (!ok) {}
-
-                    // 进入下一个流量监控窗口
-                    new_bytes_window();
+                    set_last_ts(meta.flow_num, now);
                 }
-            } else {}
+            }
         }
     }
 
@@ -54,30 +53,31 @@ control MyEgress(inout headers hdr,
     }
 
     apply {
-        if (hdr.int_header.isValid()){
+        if (hdr.int_header.isValid()) {
             int_table.apply();
         }
 
-        if (INT_NODE_TYPE == INT_SINK_NODE) {
-            if (standard_metadata.instance_type == 0) {
-                if (hdr.int_header.isValid()) {
-                    // 在 Sink 节点剥离正常数据包上的 INT 信息
-                    hdr.ipv4.protocol = PROTO_UDP;
-                    hdr.int_header.setInvalid();
-                    hdr.int_metadata.pop_front(MAX_INT_METADATA);
-                }
-            } else if (standard_metadata.instance_type == 1) {
-                // 在入口克隆的数据包
-                log_msg("克隆数据包经过");
-
-                bit<32> length = 0;
-                length = length + HEADER_LENGTH_ETHERNET;
-                length = length + HEADER_LENGTH_IPV4;
-                length = length + HEADER_LENGTH_INT;
-                length = length + (bit<32>)(METADATA_LENGTH_INT * hdr.int_header.count);
-                truncate(length);
-            } else {}
+#if INT_NODE_TYPE == INT_SINK_NODE
+        if (standard_metadata.instance_type == 0) {
+            // 正常转发：从外发数据包中剥离 INT 信息，并把 IP 长度还原
+            if (hdr.int_header.isValid()) {
+                bit<16> int_bytes = (bit<16>)HEADER_LENGTH_INT
+                    + (bit<16>)METADATA_LENGTH_INT * (bit<16>)hdr.int_header.count;
+                hdr.ipv4.totalLen = hdr.ipv4.totalLen - int_bytes;
+                hdr.ipv4.protocol = PROTO_UDP;
+                hdr.int_header.setInvalid();
+                hdr.int_metadata.pop_front(MAX_INT_METADATA);
+            }
+        } else if (standard_metadata.instance_type == 1) {
+            // 入口克隆数据包：截断到 INT 元数据末尾，仅保留遥测内容
+            bit<32> length = 0;
+            length = length + HEADER_LENGTH_ETHERNET;
+            length = length + HEADER_LENGTH_IPV4;
+            length = length + HEADER_LENGTH_INT;
+            length = length + (bit<32>)(METADATA_LENGTH_INT * hdr.int_header.count);
+            truncate(length);
         }
+#endif
     }
 }
 

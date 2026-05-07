@@ -1,0 +1,17 @@
+[project]
+name = "tt-int"
+version = "0.1.0"
+description = "Time-Threshold-based Lightweight In-Band Network Telemetry for P4-enabled programmable networks"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "scapy>=2.5.0",
+]
+
+[dependency-groups]
+dev = [
+    "pytest>=8.0",
+]
+
+[tool.uv]
+package = false

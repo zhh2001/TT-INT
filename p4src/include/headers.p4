@@ -13,7 +13,11 @@
 #define HEADER_LENGTH_ETHERNET 14
 #define HEADER_LENGTH_IPV4     20
 #define HEADER_LENGTH_INT      2
-#define METADATA_LENGTH_INT    4
+#define METADATA_LENGTH_INT    2
+
+// 流表容量与索引位宽
+#define N_FLOW        1024
+#define FLOW_ID_BITS  10
 
 typedef bit<9>  egressSpec_t;
 typedef bit<48> macAddr_t;
@@ -24,8 +28,9 @@ typedef bit<32> ip4Addr_t;
 typedef bit<8>  protocol_t;
 typedef bit<3>  flags_t;
 
-typedef bit<23> switchId_t;
-typedef bit<9>  outputPort_t;
+typedef bit<8>                switchId_t;
+typedef bit<8>                hopNum_t;
+typedef bit<FLOW_ID_BITS>     flowId_t;
 
 const etherType_t TYPE_IPV4     = 16w0x0800;
 const etherType_t TYPE_ARP      = 16w0x0806;  // 地址解析协议
@@ -78,31 +83,36 @@ header ipv4_t {
     ip4Addr_t  dstAddr;
 }
 
+// INT 头：count 记录已插入的 metadata 数量；init_ttl 保存
+// 进入 INT 域时数据包的初始 TTL，用于计算每跳的 hop_num
 header int_header_t {
-    bit<8> count;     // metadata count
-    bit<8> max_hops;  // 最大跳数
+    bit<8>   count;
+    bit<8>   init_ttl;
 }
 
+// INT 元数据：每个 transit 节点向数据包追加 (switch_id, hop_num)
+// hop_num = init_ttl - 当前 ipv4.ttl
 header int_metadata_t {
-    switchId_t   switch_id;  // 当前交换机ID
-    outputPort_t output_port;
+    switchId_t  switch_id;
+    hopNum_t    hop_num;
 }
 
 struct headers {
-    ethernet_t    ethernet;
-    ipv4_t        ipv4;
-    int_header_t  int_header;
+    ethernet_t                       ethernet;
+    ipv4_t                           ipv4;
+    int_header_t                     int_header;
     int_metadata_t[MAX_INT_METADATA] int_metadata;
 }
 
 struct metadata {
-    bit<8> int_metadata_count;
+    flowId_t  flow_num;            // 当前数据包所属流的索引
+    bit<8>    int_metadata_count;  // parser 中递减的剩余条目数
 }
 
 error {
-    IntMetadataOverflow,  // INT 跳数超过 max_hops
-    MalformedIntHeader,   // INT header 格式错误
-    UnexpectedIntCount    // INT count 值异常
+    IntMetadataOverflow,
+    MalformedIntHeader,
+    UnexpectedIntCount
 }
 
 #endif  /* _HEADERS_P4_ */

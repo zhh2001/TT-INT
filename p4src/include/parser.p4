@@ -18,7 +18,7 @@ parser MyParser(packet_in packet,
         packet.extract(hdr.ethernet);
         transition select(hdr.ethernet.etherType) {
             TYPE_IPV4: parse_ipv4;
-            default: accept;
+            default:   accept;
         }
     }
 
@@ -26,12 +26,7 @@ parser MyParser(packet_in packet,
         packet.extract(hdr.ipv4);
         transition select(hdr.ipv4.protocol) {
             PROTO_INT: parse_int_header;
-            PROTO_CUSTOM: accept;
-#if INT_NODE_TYPE != INT_SOURCE_NODE
-            default: parse_int_header;
-#else
-            default: accept;
-#endif
+            default:   accept;
         }
     }
 
@@ -39,7 +34,7 @@ parser MyParser(packet_in packet,
         packet.extract(hdr.int_header);
         meta.int_metadata_count = hdr.int_header.count;
         transition select(meta.int_metadata_count) {
-            0: accept;
+            0:       accept;
             default: parse_int_metadata;
         }
     }
@@ -47,8 +42,8 @@ parser MyParser(packet_in packet,
     state parse_int_metadata {
         packet.extract(hdr.int_metadata.next);
         meta.int_metadata_count = meta.int_metadata_count - 1;
-        transition select(meta.int_metadata_count){
-            0: accept;
+        transition select(meta.int_metadata_count) {
+            0:       accept;
             default: parse_int_metadata;
         }
     }

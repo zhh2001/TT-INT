@@ -9,7 +9,12 @@ warnings.filterwarnings("ignore", category=FutureWarning)
 warnings.filterwarnings('ignore', category=SyntaxWarning)
 
 
-def main():
+def build_network() -> NetworkAPI:
+    """组装 5 交换机直链拓扑：h1 - s1 - s2 - s3 - s4 - s5 - h5。
+
+    s1 为 INT Source，s2/s3/s4 为 INT Transit，s5 为 INT Sink。
+    返回未启动的 NetworkAPI 实例，由调用方决定是否开 CLI、何时启动。
+    """
     net = NetworkAPI()
 
     net.setCompiler(p4rt=True)
@@ -51,7 +56,7 @@ def main():
     net.setP4SwitchId('s2', s2_switch_id)
     net.setP4SwitchId('s3', s3_switch_id)
     net.setP4SwitchId('s4', s4_switch_id)
-    net.setP4SwitchId('s4', s5_switch_id)
+    net.setP4SwitchId('s5', s5_switch_id)
 
     grpc_port = 50000
     s1_grpc_port = grpc_port + 1
@@ -157,6 +162,11 @@ def main():
 
     net.enableCpuPort('s5')  # 会导致交换机状态重置，流表被清空，很坑！
 
+    return net
+
+
+def main():
+    net = build_network()
     net.enableCli()
     net.startNetwork()
 

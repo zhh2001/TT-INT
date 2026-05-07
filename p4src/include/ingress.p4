@@ -38,31 +38,53 @@ control MyIngress(inout headers hdr,
         default_action = NoAction();
     }
 
-    apply {
-        if (standard_metadata.instance_type == 0) {
-            bool ok = acc_cur_bytes(standard_metadata.packet_length);
-            assert(ok);
-            if (!ok) {}
-        }
+    // 将 5 元组映射到一个紧凑的流索引，供 egress 阶段
+    // 索引时间阈值/上次插入时间戳/最大条数等寄存器
+    action set_flow_num(flowId_t flow_num) {
+        meta.flow_num = flow_num;
+    }
 
-        if (hdr.ipv4.isValid()){
+    table flow_id_table {
+        key = {
+            hdr.ipv4.srcAddr:  exact;
+            hdr.ipv4.dstAddr:  exact;
+        }
+        actions = {
+            set_flow_num;
+            NoAction;
+        }
+        size = N_FLOW;
+        default_action = NoAction();
+    }
+
+    apply {
+#if INT_NODE_TYPE == INT_SOURCE_NODE
+        // Source 节点：在转发前为首次进入 INT 域的数据包安装 INT 头，
+        // 同时记录初始 TTL，用于后续 hop_num 计算
+        if (hdr.ipv4.isValid() && !hdr.int_header.isValid()
+                && hdr.ipv4.protocol != PROTO_CUSTOM) {
+            hdr.int_header.setValid();
+            hdr.int_header.count    = 0;
+            hdr.int_header.init_ttl = hdr.ipv4.ttl;
+            hdr.ipv4.protocol       = PROTO_INT;
+            hdr.ipv4.totalLen       = hdr.ipv4.totalLen + HEADER_LENGTH_INT;
+        }
+#endif
+
+        if (hdr.ipv4.isValid()) {
             ipv4_lpm.apply();
         }
 
-        if (!hdr.int_header.isValid()) {
-            if (hdr.ipv4.protocol != PROTO_CUSTOM) {
-                hdr.ipv4.protocol = PROTO_INT;
-                hdr.int_header.setValid();
-            }
+        if (hdr.int_header.isValid()) {
+            flow_id_table.apply();
         }
 
-        if (standard_metadata.instance_type == 0) {
-            if (INT_NODE_TYPE == INT_SINK_NODE) {
-                if (hdr.int_header.isValid()) {
-                    clone(CloneType.I2E, 105);
-                }
-            }
+#if INT_NODE_TYPE == INT_SINK_NODE
+        // Sink 节点：将带 INT 信息的数据包克隆到控制平面（CPU 端口）
+        if (standard_metadata.instance_type == 0 && hdr.int_header.isValid()) {
+            clone(CloneType.I2E, 105);
         }
+#endif
     }
 }
 

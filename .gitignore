@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.pytest_cache/
+
+# uv / 虚拟环境
+.venv/
+venv/
+
+# P4 编译产物
+build/
+*.p4i
+*.p4info.txt
+*.p4info.txtpb
+p4src/*.json
+p4src/*_p4rt.txt
+
+# Mininet / p4-utils 运行时产物
+log/
+pcap/
+topology.json
+*.pcap
+
+# 编辑器
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 系统
+.DS_Store
+Thumbs.db
