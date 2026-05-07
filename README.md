@@ -1,13 +1,10 @@
 # TT-INT
 
-A Time-Threshold-based Lightweight In-Band Network Telemetry Scheme for
-P4-Enabled Programmable Networks.
+A Time-Threshold-based Lightweight In-Band Network Telemetry Scheme for P4-Enabled Programmable Networks.
 
 论文发表于 *IEEE Transactions on Network and Service Management*，DOI: [10.1109/TNSM.2026.3688086](https://doi.org/10.1109/TNSM.2026.3688086)。
 
-
-本仓库提供 TT-INT 论文中"基础时间阈值机制"在 BMv2 上的最小可运行实现，
-以及两套自动化测试。
+本仓库提供 TT-INT 论文中"基础时间阈值机制"在 BMv2 上的最小可运行实现，以及两套自动化测试。
 
 ## 仓库结构
 
@@ -58,8 +55,7 @@ INT 元数据栈中每条记录：
 | `last_ts`    | 该流上次插入遥测元数据的时间戳           |
 | `max_cnt`    | 单包允许携带的最大遥测条目数             |
 
-`flow_id_table` 通过 5 元组（当前实现取 `srcAddr` + `dstAddr` 即足够
-覆盖测试场景）映射到一个紧凑的 `flow_num`。
+`flow_id_table` 通过 5 元组（当前实现取 `srcAddr` + `dstAddr` 即足够覆盖测试场景）映射到一个紧凑的 `flow_num`。
 
 `egress` 中的判定逻辑严格按论文 Algorithm 2：
 
@@ -72,9 +68,7 @@ if delta >= time_th[flow_num] && count < max_cnt[flow_num]:
     last_ts[flow_num] = ingress_global_timestamp
 ```
 
-Source 节点在 `ingress` 阶段为首次进入 INT 域的数据包安装 INT 头，
-并把当时的 IPv4 TTL 写入 `init_ttl`；Sink 节点把整段 INT 信息克隆到
-CPU 端口，再从正常转发的数据包中剥离。
+Source 节点在 `ingress` 阶段为首次进入 INT 域的数据包安装 INT 头，并把当时的 IPv4 TTL 写入 `init_ttl`；Sink 节点把整段 INT 信息克隆到 CPU 端口，再从正常转发的数据包中剥离。
 
 ## 环境依赖
 
@@ -111,10 +105,7 @@ bash tests/run.sh
 sudo bash tests/run_mininet.sh
 ```
 
-复用 `main.build_network()` 起 5 交换机直链
-（`h1 — s1 — s2 — s3 — s4 — s5 — h5`），跳过 CLI，
-从 `h1` 命名空间内 scapy 发包，读 `pcap/s5/s5-eth1_in.pcap`
-（sink 入向、剥离前）做断言。
+复用 `main.build_network()` 起 5 交换机直链（`h1 — s1 — s2 — s3 — s4 — s5 — h5`），跳过 CLI，从 `h1` 命名空间内 scapy 发包，读 `pcap/s5/s5-eth1_in.pcap`（sink 入向、剥离前）做断言。
 
 期望栈顺序为 `[(s4,4), (s3,3), (s2,2), (s1,1)]`。
 
@@ -140,4 +131,17 @@ const bit<8>      DEFAULT_MAX_COUNT      = 8w16;
 ```
 register_write time_th 0 100000     # 100 ms 阈值（流 0）
 register_write max_cnt 0 8          # 单包最多 8 条元数据
+```
+
+## 引用
+
+```bibtex
+@ARTICLE{11495244,
+  author={Zhang, Henghua and Chen, Jue and Wu, Yuhang and Xiong, Yujie},
+  journal={IEEE Transactions on Network and Service Management}, 
+  title={TT-INT: A Time-Threshold-based Lightweight In-Band Network Telemetry Scheme for P4-Enabled Programmable Networks}, 
+  year={2026},
+  doi={10.1109/TNSM.2026.3688086},
+  ISSN={1932-4537},
+}
 ```
