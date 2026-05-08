@@ -1,6 +1,6 @@
 # TT-INT
 
-A Time-Threshold-based Lightweight In-Band Network Telemetry Scheme for P4-Enabled Programmable Networks.
+A Time-Threshold-Based Lightweight In-Band Network Telemetry Scheme for P4-Enabled Programmable Networks.
 
 论文发表于 *IEEE Transactions on Network and Service Management*，DOI: [10.1109/TNSM.2026.3688086](https://doi.org/10.1109/TNSM.2026.3688086)。
 
@@ -139,8 +139,10 @@ register_write max_cnt 0 8          # 单包最多 8 条元数据
 @ARTICLE{11495244,
   author={Zhang, Henghua and Chen, Jue and Wu, Yuhang and Xiong, Yujie},
   journal={IEEE Transactions on Network and Service Management}, 
-  title={TT-INT: A Time-Threshold-based Lightweight In-Band Network Telemetry Scheme for P4-Enabled Programmable Networks}, 
+  title={TT-INT: A Time-Threshold-Based Lightweight In-Band Network Telemetry Scheme for P4-Enabled Programmable Networks}, 
   year={2026},
+  volume={23},
+  pages={4335-4354},
   doi={10.1109/TNSM.2026.3688086},
   ISSN={1932-4537},
 }
